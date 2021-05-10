@@ -1,0 +1,42 @@
+Question 1:
+A) While Average Order Value (AOV) sounds useful, it is a garbage metric when we have out of place orders
+   that will throw the numbers off and not be an accurate represetation of the every day customers order.
+   The order in question that is throwing everything off contained 2000 different items, when in reality
+   the average customer only ordered two. (1.99)
+
+B) A more useful metric to go by, would be a combination of the Average Order Volume (How many items in an order)
+   when you exclude the outliers that dont represent an everyday customer, and then combining that with the average
+   item value. These two seperate metrics can give us a new, more representative AOV, while giving us an idea what
+   the actual average order looks like.
+
+C) The new Average Order Volume metric, gives us an average of 1.99 items per customer, with an expected 
+   value of &754.09 per order. When we include the outliers we have the 
+   unbeleivable 8.79 items per customer at an Average Order Value of $3145.13
+
+
+Question 2:
+A) Speedy Express shipped a total of 54 orders. 
+
+SELECT COUNT(ShipperID) AS "Speedy Orders"
+FROM Orders
+WHERE ShipperID=1;
+
+B) Peacock is the lastname of the employee with the most orders
+
+SELECT COUNT(Orders.OrderID) AS "Orders Made", Employees.LastName
+FROM Orders
+INNER JOIN Employees ON Orders.EmployeeID=Employees.EmployeeID
+GROUP BY Employees.LastName
+ORDER BY COUNT(Orders.OrderID) DESC;
+
+
+C)  Boston Crab Meat sold the most number of items in Germany, at 160 units.
+
+SELECT SUM(orderDetails.Quantity) AS "Germany Sales", OrderDetails.ProductID, ProductName
+FROM (((OrderDetails
+INNER JOIN Products ON OrderDetails.ProductID=Products.ProductID)
+INNER JOIN Orders ON OrderDetails.OrderID=Orders.OrderID)
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID)
+WHERE Customers.Country = "Germany"
+GROUP BY OrderDetails.ProductID, ProductName
+ORDER BY SUM(orderDetails.Quantity) DESC;
