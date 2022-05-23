@@ -1,17 +1,15 @@
-Question 1:
-A) While Average Order Value (AOV) sounds useful, it is a garbage metric when we have out of place orders
+0Question 1:
+A) While Average Order Value (AOV) sounds useful, it is a garbage metric when we include outliers 
    that will throw the numbers off and not be an accurate represetation of the every day customers order.
-   The order in question that is throwing everything off contained 2000 different items, when in reality
-   the average customer only ordered two. (1.99)
+   Some of the orders in question that are throwing everything off contained 2000 different items, when in reality
+   the average customer only ordered (1.99) two. While other orders contained 3 items and have a value of $77,175
+   which also drastically throws off any averages.
 
-B) A more useful metric to go by, would be a combination of the Average Order Volume (How many items in an order)
-   when you exclude the outliers that dont represent an everyday customer, and then combining that with the average
-   item value. These two seperate metrics can give us a new, more representative AOV, while giving us an idea what
-   the actual average order looks like.
+B) A more useful metric to go by, would be the Median Order Value (MOV) as this will exclude the outliers 
+   that are throwing off our data, both the high volume orders as well as the high cost per item orders.
 
-C) The new Average Order Volume metric, gives us an average of 1.99 items per customer, with an expected 
-   value of &754.09 per order. When we include the outliers we have the 
-   unbeleivable 8.79 items per customer at an Average Order Value of $3145.13
+C) The new Median Order Value (MOV) will give us a value of $284 with an expected 2 items per order vs the previous 
+   8.79 items per customer at a value of $3,145.13 (on average).
 
 
 Question 2:
