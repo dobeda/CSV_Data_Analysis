@@ -2,7 +2,7 @@
  * FILE             : main.cs
  * PROJECT          : Data Analysis
  * FIRST VERSION    : May 3rd 2021
- * LAST UPDATE      : May 9th 2021
+ * LAST UPDATE      : May 22nd 2022
  * Parameters       : String of filename/path to open, else uses the default
  * DESCRIPTION      : Simple program to parse through a csv file to calculate some useful metrics
  */
@@ -86,12 +86,18 @@ namespace sneakerData
             int totalOrderValue = 0;
             int orderCount = ShopOrders.Count();
             int itemCount = 0;
+            int[] orderValue = new int[ShopOrders.Count()];
+            int[] orderVolume = new int[ShopOrders.Count()];
+            int i = 0;
 
             //All inclusive
             foreach (sneakerSale order in ShopOrders)
             {
                 totalOrderValue += order.OrderAmount;
                 itemCount += order.TotalItems;
+                orderValue[i] = order.OrderAmount;
+                orderVolume[i] = order.TotalItems;
+                i++;
             }
             //print useful values to the screen
             Console.WriteLine("With Outliers (All Data)");
@@ -99,25 +105,12 @@ namespace sneakerData
             Console.WriteLine("Average Item Value  : $" + Math.Round((float)(totalOrderValue / (float)itemCount), 2));
             Console.WriteLine("Average Order Volume: " + Math.Round((float)(itemCount / (float)orderCount), 2) + " items per order\n");
 
-            //Exclude Outliers
-            totalOrderValue = 0;
-            orderCount = 0;
-            itemCount = 0;
-            foreach (sneakerSale order in ShopOrders)
-            {
-                if (order.TotalItems <= 10)
-                {
-                    totalOrderValue += order.OrderAmount;
-                    itemCount += order.TotalItems;
-                    orderCount++;
-                }
-                
-            }
-            //print useful values to the screen
-            Console.WriteLine("Without Outliers (Orders exceeding 10 items)");
-            Console.WriteLine("Average Order Value : $" + Math.Round((float)(totalOrderValue / (float)orderCount), 2));
-            Console.WriteLine("Average Item Value  : $" + Math.Round((float)(totalOrderValue / (float)itemCount), 2));
-            Console.WriteLine("Average Order Volume: " + Math.Round((float)(itemCount / (float)orderCount), 2) + " items per order\n");
+            //Median
+            Array.Sort(orderValue);
+            Array.Sort(orderVolume);
+            Console.WriteLine("Median Order Value  : " + orderValue[(orderValue.Length/2)]);
+            Console.WriteLine("Median Order Volume : " + orderVolume[(orderVolume.Length/2)]);
+
         }
         /*
          * METHOD       : readValues

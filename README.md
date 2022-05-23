@@ -14,13 +14,8 @@ Average Item Value  : $357.92
 Average Order Volume: 8.79 items per order
 
 
-Without Outliers (Orders Exceeding 10 items)
+Median Order Value  : 284
 
-Average Order Value : $754.09
-
-Average Item Value  : $378.18
-
-Average order Volume: 1.99 items per order
-
+Median Order Volume : 2
 
 Press any key to exit...

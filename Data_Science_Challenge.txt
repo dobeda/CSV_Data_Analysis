@@ -1,4 +1,4 @@
-0Question 1:
+Question 1:
 A) While Average Order Value (AOV) sounds useful, it is a garbage metric when we include outliers 
    that will throw the numbers off and not be an accurate represetation of the every day customers order.
    Some of the orders in question that are throwing everything off contained 2000 different items, when in reality
